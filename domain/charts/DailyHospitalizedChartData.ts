@@ -7,7 +7,7 @@ export default class DailyHospitalizedChartData {
     const ventilated: number[] = []
 
     data!.forEach((element: IRawData) => {
-      const date = new Date(element.date.substring(0, 10) + ' 12:00:00')
+      const date = new Date(element.date)
       labels.push(date.toLocaleDateString())
       hospitalized.push(element.hospitalized)
       ventilated.push(element.ventilators)

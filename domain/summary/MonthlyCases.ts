@@ -24,7 +24,7 @@ export default class LastRecord {
   }
 
   private static getDateKey (value: string): string {
-    const date = new Date(value.substring(0, 10))
+    const date = new Date(value)
     return ShortMonthsEnum[date.getMonth()] + '-' + date.getFullYear()
   }
 }

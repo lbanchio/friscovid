@@ -8,7 +8,7 @@ export default class DailyCasesChartData {
     let avg: number[] = []
 
         data!.forEach((element: IRawData) => {
-          const date = new Date(element.date.substring(0, 10) + ' 12:00:00')
+          const date = new Date(element.date)
           labels.push(date.toLocaleDateString())
           cases.push(element.new_cases)
         })

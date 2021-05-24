@@ -6,7 +6,7 @@ export default class DailyCasesChartData {
     const deaths: number[] = []
 
     data!.forEach((element: IRawData) => {
-      const date = new Date(element.date.substring(0, 10) + ' 12:00:00')
+      const date = new Date(element.date)
       labels.push(date.toLocaleDateString())
       deaths.push(element.deaths)
     })

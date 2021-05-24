@@ -1,16 +1,16 @@
 <template>
   <div>
-    <h1 class="my-4 text-2xl font-light leading-tight">
+    <page-title>
       Resumen
-    </h1>
+    </page-title>
 
     <div v-if="lastRecord">
-      <h2 class="my-3 text-xl font-light">
+      <page-subtitle>
         Último registro:
         <span class="rounded-3xl font-medium text-base bg-blue-100 px-3 py-2">{{
           new Date(lastRecord.date.substring(0, 10) + ' 12:00:00').toLocaleDateString()
         }}</span>
-      </h2>
+      </page-subtitle>
       <div v-if="lastRecord" class="flex items-center dark:bg-gray-900">
         <div class="container max-w-6xl mx-auto">
           <div class="grid gap-7 sm:grid-cols-2 md:grid-cols-3">
@@ -59,9 +59,9 @@
         </div>
       </div>
 
-      <h2 class="my-3 text-xl font-light">
+      <page-subtitle>
         Información histórica
-      </h2>
+      </page-subtitle>
 
       <div v-if="lastRecord" class="flex items-center dark:bg-gray-900">
         <div class="container max-w-6xl mx-auto">
@@ -87,10 +87,14 @@ import { Component, Vue } from 'vue-property-decorator'
 import { Getter, Action } from 'vuex-class'
 import StatsCard from '../components/StatsCard.vue'
 import IRawData from '../domain/IRawData'
+import PageTitle from '../components/layout/PageTitle.vue'
+import PageSubtitle from '../components/layout/PageSubtitle.vue'
 
 @Component({
   components: {
-    StatsCard
+    StatsCard,
+    PageTitle,
+    PageSubtitle
   }
 })
 export default class Index extends Vue {
