@@ -18,7 +18,8 @@
     "chart.js": "^3.2.1",
     "core-js": "^3.9.1",
     "nuxt": "^2.15.3",
-    "vue-property-decorator": "^9.1.2"
+    "vue-property-decorator": "^9.1.2",
+    "vuex-class": "^0.3.2"
   },
   "devDependencies": {
     "@nuxt/types": "^2.15.3",

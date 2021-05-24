@@ -1,26 +1,46 @@
 <template>
   <div class="leading-normal tracking-normal gradient">
-    <Nuxt />
+    <page-navbar />
+    <div
+      class="container shadow-lg lg:max-w-screen-lg sm:mt-8 sm:mt-8 pt-2 px-4 sm:pt-6 pb-6 mx-auto sm:px-12 bg-white"
+    >
+      <Nuxt />
+    </div>
   </div>
 </template>
 
 <script>
-    export default {
-      head () {
-          return {
-              bodyAttrs: {
-                  class: 'bg-white font-sans leading-normal tracking-normal'
-              }
-          }
-      },
+export default {
+  components: {
+    PageNavbar: () => import('../components/layout/PageNavbar')
+  },
+  data () {
+    return {
+      loaded: false
     }
+  },
+  head () {
+    return {
+      bodyAttrs: {
+        class: 'bg-white bg-gray-100 font-sans leading-normal tracking-normal'
+      }
+    }
+  },
+  async created () {
+    try {
+      await this.$store.dispatch('cases/cases/updateRawData')
+    } catch (e) {
+      //
+    }
+
+    this.$nextTick(() => this.$forceUpdate())
+    this.loaded = true
+  }
+}
 </script>
 
 <style>
 html {
-  font-family:
-    'Helvetica Neue',
-    sans-serif;
   font-size: 16px;
   word-spacing: 1px;
   -ms-text-size-adjust: 100%;
@@ -35,34 +55,5 @@ html {
 *::after {
   box-sizing: border-box;
   margin: 0;
-}
-
-.button--green {
-  display: inline-block;
-  border-radius: 4px;
-  border: 1px solid #3b8070;
-  color: #3b8070;
-  text-decoration: none;
-  padding: 10px 30px;
-}
-
-.button--green:hover {
-  color: #fff;
-  background-color: #3b8070;
-}
-
-.button--grey {
-  display: inline-block;
-  border-radius: 4px;
-  border: 1px solid #35495e;
-  color: #35495e;
-  text-decoration: none;
-  padding: 10px 30px;
-  margin-left: 15px;
-}
-
-.button--grey:hover {
-  color: #fff;
-  background-color: #35495e;
 }
 </style>
