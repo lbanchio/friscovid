@@ -18,10 +18,7 @@
     "@nuxtjs/pwa": "^3.3.5",
     "chart.js": "^3.2.1",
     "core-js": "^3.9.1",
-    "nuxt": "^2.15.3",
-    "vue-class-component": "^7.2.6",
-    "vue-property-decorator": "^9.1.2",
-    "vuex-class": "^0.3.2"
+    "nuxt": "^2.15.3"
   },
   "devDependencies": {
     "@nuxt/types": "^2.15.3",
@@ -40,6 +37,9 @@
     "postcss": "^8.2.8",
     "push-dir": "^0.4.1",
     "ts-jest": "^26.5.4",
-    "vue-jest": "^3.0.4"
+    "vue-class-component": "^7.2.6",
+    "vue-jest": "^3.0.4",
+    "vue-property-decorator": "^9.1.2",
+    "vuex-class": "^0.3.2"
   }
 }

@@ -4,13 +4,16 @@
       Resumen
     </page-title>
 
-    <div v-if="lastRecord">
+    <div>
       <page-subtitle>
         Último registro:
-        <span class="rounded-3xl font-medium text-base bg-blue-100 px-3 py-2">{{
+        <span v-if="lastRecord" class="rounded-3xl font-medium text-base bg-blue-100 px-3 py-2">{{
           new Date(lastRecord.date.substring(0, 10) + ' 12:00:00').toLocaleDateString()
         }}</span>
       </page-subtitle>
+
+      <loading-spinner v-if="!lastRecord" class="h-60 flex items-center justify-center" />
+      
       <div v-if="lastRecord" class="flex items-center dark:bg-gray-900">
         <div class="container max-w-6xl mx-auto">
           <div class="grid gap-7 sm:grid-cols-2 md:grid-cols-3">
@@ -63,6 +66,8 @@
         Información histórica
       </page-subtitle>
 
+      <loading-spinner v-if="!lastRecord" class="h-60 flex items-center justify-center" />
+
       <div v-if="lastRecord" class="flex items-center dark:bg-gray-900">
         <div class="container max-w-6xl mx-auto">
           <div class="grid gap-7 sm:grid-cols-2 md:grid-cols-3">
@@ -85,16 +90,14 @@
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
 import { Getter, Action } from 'vuex-class'
-import StatsCard from '../components/StatsCard.vue'
 import IRawData from '../domain/IRawData'
-import PageTitle from '../components/layout/PageTitle.vue'
-import PageSubtitle from '../components/layout/PageSubtitle.vue'
 
 @Component({
   components: {
-    StatsCard,
-    PageTitle,
-    PageSubtitle
+    StatsCard: () => import('../components/StatsCard.vue'),
+    PageTitle: () => import('../components/layout/PageTitle.vue'),
+    PageSubtitle: () => import('../components/layout/PageSubtitle.vue'),
+    LoadingSpinner: () => import('../components/LoadingSpinner.vue')
   }
 })
 export default class Index extends Vue {
