@@ -10,8 +10,7 @@ export const mutations = {
 
 export const actions = {
   async updateRawData (context) {
-    const rawData = await this.$axios.get('https://script.google.com/macros/s/AKfycbw5EYA5VAxSqeXHl5XlfreTlPPtjFU6QNuD9nZTXmia6iJHuDtG6D_w7zj3ga0z4AeV/exec')
-
+    const rawData = await this.$axios.get('https://covid-data.lbanchio.workers.dev')
     context.commit('update', rawData.data.data.map((row) => {
       row.date = row.date.substring(0, 10) + ' 19:00:00'
       return row
