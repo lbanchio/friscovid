@@ -13,7 +13,7 @@
       </page-subtitle>
 
       <loading-spinner v-if="!lastRecord" class="h-60 flex items-center justify-center" />
-      
+
       <div v-if="lastRecord" class="flex items-center dark:bg-gray-900">
         <div class="container max-w-6xl mx-auto">
           <div class="grid gap-7 sm:grid-cols-2 md:grid-cols-3">
