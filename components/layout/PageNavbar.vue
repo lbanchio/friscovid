@@ -3,21 +3,21 @@
     <div class="md:block hidden w-full mx-auto px-0 sm:px-0 divide-gray-50 md:visible">
       <div class="flex justify-between items-center shadow-md sm:px-6 sm:py-6 md:justify-start md:space-x-10">
         <div class="flex justify-start lg:w-0 lg:flex-1">
-          <NuxtLink to="/">
+          <NuxtLink no-prefetch to="/">
             <span class="">Friscovid</span>
           </NuxtLink>
         </div>
 
         <nav class="md:flex space-x-10">
-          <NuxtLink to="/" class="text-base font-medium text-gray-500 hover:text-gray-900">
+          <NuxtLink no-prefetch to="/" class="text-base font-medium text-gray-500 hover:text-gray-900">
             Inicio
           </NuxtLink>
 
-          <NuxtLink to="/daily-cases" class="text-base font-medium text-gray-500 hover:text-gray-900">
+          <NuxtLink no-prefetch to="/daily-cases" class="text-base font-medium text-gray-500 hover:text-gray-900">
             Gráficos diarios
           </NuxtLink>
 
-          <NuxtLink to="/monthly-cases" class="text-base font-medium text-gray-500 hover:text-gray-900">
+          <NuxtLink no-prefetch to="/monthly-cases" class="text-base font-medium text-gray-500 hover:text-gray-900">
             Gráficos mensuales
           </NuxtLink>
         </nav>
@@ -55,13 +55,13 @@
         </div>
         <div v-if="open" class="py-6 px-5 space-y-6">
           <div class="grid grid-cols-1 gap-y-4 gap-x-8">
-            <NuxtLink to="/" class="text-base font-medium text-gray-900 hover:text-gray-700" @click.native="toggleMenu">
+            <NuxtLink no-prefetch to="/" class="text-base font-medium text-gray-900 hover:text-gray-700" @click.native="toggleMenu">
               Inicio
             </NuxtLink>
-            <NuxtLink to="/daily-cases" class="text-base font-medium text-gray-500 hover:text-gray-900" @click.native="toggleMenu">
+            <NuxtLink no-prefetch to="/daily-cases" class="text-base font-medium text-gray-500 hover:text-gray-900" @click.native="toggleMenu">
               Gráficos Diarios
             </NuxtLink>
-            <NuxtLink to="/monthly-cases" class="text-base font-medium text-gray-500 hover:text-gray-900" @click.native="toggleMenu">
+            <NuxtLink no-prefetch to="/monthly-cases" class="text-base font-medium text-gray-500 hover:text-gray-900" @click.native="toggleMenu">
               Gráficos Mensuales
             </NuxtLink>
           </div>
