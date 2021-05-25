@@ -2,7 +2,7 @@ export default {
   // Target: https://go.nuxtjs.dev/config-target
   target: 'static',
   router: {
-    base: '/friscovid/'
+    base: process.env.ROUTER_ROOT || '/friscovid/'
   },
 
   // Global page headers: https://go.nuxtjs.dev/config-head
