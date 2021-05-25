@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "nuxt",
     "build": "nuxt build --modern=server",
+    "analize": "nuxt build -a --modern=server",
     "start": "nuxt start",
     "generate": "nuxt generate --modern",
     "lint:js": "eslint --ext \".js,.vue\" --ignore-path .gitignore .",

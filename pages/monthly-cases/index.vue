@@ -2,9 +2,7 @@
   <div>
     <page-title>Estadística mensual</page-title>
 
-    <h2 class="text-xl font-light my-2">
-      Casos mensuales
-    </h2>
+    <page-subtitle>Casos mensuales</page-subtitle>
 
     <div v-if="!monthlyCases.loaded" class="h-36 flex items-center justify-center">
       <loading-spinner />
@@ -12,9 +10,7 @@
 
     <custom-chart v-if="monthlyCases && monthlyCases.loaded" class="mb-4" :config="monthlyCases" />
 
-    <h2 class="text-xl font-light my-2">
-      Fallecimientos mensuales
-    </h2>
+    <page-subtitle>Fallecidos</page-subtitle>
 
     <div v-if="!monthlyDeaths.loaded" class="h-36 flex items-center justify-center">
       <loading-spinner />
@@ -29,13 +25,13 @@ import { Component, Vue } from 'vue-property-decorator'
 import { Getter, Action } from 'vuex-class'
 import MonthlyCasesChartData from '../../domain/charts/MontlyCasesChartData'
 import MonthlyDeathsChartData from '../../domain/charts/MonthlyDeathsChartData'
-import PageTitle from '../../components/layout/PageTitle.vue'
-import CustomChart from '~/components/CustomChart.vue'
 
 @Component({
   components: {
-    CustomChart,
-    PageTitle
+    CustomChart: () => import('../../components/CustomChart.vue'),
+    PageTitle: () => import('../../components/layout/PageTitle.vue'),
+    PageSubtitle: () => import('../../components/layout/PageSubtitle.vue'),
+    LoadingSpinner: () => import('../../components/LoadingSpinner.vue')
   }
 })
 export default class Index extends Vue {

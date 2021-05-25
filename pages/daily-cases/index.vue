@@ -50,18 +50,16 @@
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
 import { Getter, Action } from 'vuex-class'
-import PageTitle from '../../components/layout/PageTitle.vue'
-import PageSubtitle from '../../components/layout/PageSubtitle.vue'
 import DailyCasesChartData from '../../domain/charts/DailyCasesChartData'
 import DailyDeathsChartData from '../../domain/charts/DailyDeathsChartData'
 import DailyHospitalizedChartData from '../../domain/charts/DailyHospitalizedChartData'
-import CustomChart from '~/components/CustomChart.vue'
 
 @Component({
   components: {
-    CustomChart,
-    PageTitle,
-    PageSubtitle
+    CustomChart: () => import('../../components/CustomChart.vue'),
+    PageTitle: () => import('../../components/layout/PageTitle.vue'),
+    PageSubtitle: () => import('../../components/layout/PageSubtitle.vue'),
+    LoadingSpinner: () => import('../../components/LoadingSpinner.vue')
   }
 })
 export default class Index extends Vue {

@@ -5,11 +5,36 @@
 </template>
 
 <script lang="ts">
-/* eslint-disable no-new */
-/* eslint-disable new-cap */
 
 import { Component, Prop, Vue } from 'vue-property-decorator'
-import { ChartConfiguration } from 'chart.js'
+import {
+  ChartConfiguration,
+  Chart,
+  LineElement,
+  BarElement,
+  PointElement,
+  BarController,
+  LineController,
+  CategoryScale,
+  LinearScale,
+  Legend,
+  Title,
+  Tooltip,
+  ChartItem
+} from 'chart.js'
+
+Chart.register(
+  LineElement,
+  BarElement,
+  PointElement,
+  BarController,
+  LineController,
+  CategoryScale,
+  LinearScale,
+  Legend,
+  Title,
+  Tooltip
+)
 
 @Component
 export default class CustomChart extends Vue {
@@ -32,16 +57,16 @@ export default class CustomChart extends Vue {
     }
   }
 
-  private async createChart (): Promise<void> {
-    const ctx = this.$refs.chart
+  private createChart (): void {
+    const ctx = this.$refs.chart as ChartItem
     const localConfig = this.config
 
     if (localConfig && localConfig.options) {
       localConfig.options.aspectRatio = this.aspectRatio
     }
 
-    const module = await import('chart.js/auto')
-    new module.default(ctx, localConfig)
+    // eslint-disable-next-line no-new
+    new Chart(ctx, localConfig)
   }
 }
 </script>
