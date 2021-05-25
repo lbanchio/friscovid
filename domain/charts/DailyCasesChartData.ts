@@ -1,5 +1,6 @@
 import AverageMaker from '../AverageMaker'
 import IRawData from '../IRawData'
+import DateUtil from '../DateUtil'
 
 export default class DailyCasesChartData {
   public static get (data: Array<IRawData>): object {
@@ -8,7 +9,7 @@ export default class DailyCasesChartData {
     let avg: number[] = []
 
         data!.forEach((element: IRawData) => {
-          const date = new Date(element.date)
+          const date = DateUtil.fromString(element.date)
           labels.push(date.toLocaleDateString())
           cases.push(element.new_cases)
         })

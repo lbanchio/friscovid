@@ -1,4 +1,5 @@
 import IRawData from '../IRawData'
+import DateUtil from '../DateUtil'
 
 export default class DailyHospitalizedChartData {
   public static get (data: Array<IRawData>): Object {
@@ -7,7 +8,7 @@ export default class DailyHospitalizedChartData {
     const ventilated: number[] = []
 
     data!.forEach((element: IRawData) => {
-      const date = new Date(element.date)
+      const date = DateUtil.fromString(element.date)
       labels.push(date.toLocaleDateString())
       hospitalized.push(element.hospitalized)
       ventilated.push(element.ventilators)

@@ -1,4 +1,5 @@
 import IRawData from '../IRawData'
+import DateUtil from '../DateUtil'
 
 export default class DailyCasesChartData {
   public static get (data: Array<IRawData>): Object {
@@ -6,7 +7,7 @@ export default class DailyCasesChartData {
     const deaths: number[] = []
 
     data!.forEach((element: IRawData) => {
-      const date = new Date(element.date)
+      const date = DateUtil.fromString(element.date)
       labels.push(date.toLocaleDateString())
       deaths.push(element.deaths)
     })

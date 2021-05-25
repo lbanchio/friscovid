@@ -1,5 +1,6 @@
 import IRawData from '../IRawData'
 import { ShortMonthsEnum } from '../MonthsEnum'
+import DateUtil from '../DateUtil'
 
 export interface IMontlyCase {
     month: string,
@@ -24,7 +25,7 @@ export default class LastRecord {
   }
 
   private static getDateKey (value: string): string {
-    const date = new Date(value)
+    const date = DateUtil.fromString(value)
     return ShortMonthsEnum[date.getMonth()] + '-' + date.getFullYear()
   }
 }

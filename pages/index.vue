@@ -8,7 +8,7 @@
       <page-subtitle>
         Último registro:
         <span v-if="lastRecord" class="rounded-3xl font-medium text-base bg-blue-100 px-3 py-2">{{
-          new Date(lastRecord.date.substring(0, 10) + ' 12:00:00').toLocaleDateString()
+          parseDate(lastRecord.date).toLocaleDateString()
         }}</span>
       </page-subtitle>
 
@@ -91,6 +91,7 @@
 import { Component, Vue } from 'vue-property-decorator'
 import { Getter, Action } from 'vuex-class'
 import IRawData from '../domain/IRawData'
+import DateUtil from '../domain/DateUtil'
 
 @Component({
   components: {
@@ -105,6 +106,10 @@ export default class Index extends Vue {
   @Getter('cases/cases/rawData') rawData: any;
   private lastRecord?: IRawData = undefined;
   private previousRecord?: IRawData = undefined;
+
+  private parseDate (value: string): Date {
+    return DateUtil.fromString(value)
+  }
 
   private created () {
     this.load()
