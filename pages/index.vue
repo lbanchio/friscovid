@@ -25,7 +25,7 @@
             />
 
             <stats-card
-              title="Fallecimientos"
+              title="Fallecidos"
               :value="lastRecord.deaths"
               :change="Math.abs(lastRecord.deaths - previousRecord.deaths)"
               :is-better="(lastRecord.deaths - previousRecord.deaths) <= 0"
