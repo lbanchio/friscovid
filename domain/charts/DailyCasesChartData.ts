@@ -8,60 +8,60 @@ export default class DailyCasesChartData {
     const cases: number[] = []
     let avg: number[] = []
 
-        data!.forEach((element: IRawData) => {
-          const date = DateUtil.fromString(element.date)
-          labels.push(date.toLocaleDateString())
-          cases.push(element.new_cases)
-        })
+    data!.forEach((element: IRawData) => {
+      const date = DateUtil.fromString(element.date)
+      labels.push(date.toLocaleDateString())
+      cases.push(element.new_cases)
+    })
 
-        avg = AverageMaker.make(7, cases, true)
+    avg = AverageMaker.make(7, cases, true)
 
-        return {
-          loaded: cases.length > 0,
-          type: 'bar',
-          data: {
-            labels,
-            datasets: [
-              {
-                label: 'Media móvil 7D',
-                data: avg,
-                type: 'line',
-                backgroundColor: '#666',
-                borderColor: '#666',
-                borderWidth: 2,
-                pointRadius: 0,
-                tension: 0.3
-              },
-              {
-                label: 'Casos confirmados',
-                data: cases,
-                backgroundColor: '#BBB'
-              }
-            ]
+    return {
+      loaded: cases.length > 0,
+      type: 'bar',
+      data: {
+        labels,
+        datasets: [
+          {
+            label: 'Media móvil 7D',
+            data: avg,
+            type: 'line',
+            backgroundColor: '#666',
+            borderColor: '#666',
+            borderWidth: 2,
+            pointRadius: 0,
+            tension: 0.3
           },
-          options: {
-            scales: {
-              y: {
-                beginAtZero: true,
-                ticks: {
-                  color: '#999'
-                },
-                title: {
-                  display: true,
-                  text: 'Casos detectados'
-                }
-              },
-              x: {
-                grid: {
-                  display: false
-                },
-                title: {
-                  display: true,
-                  text: 'Fecha'
-                }
-              }
+          {
+            label: 'Casos confirmados',
+            data: cases,
+            backgroundColor: '#BBB'
+          }
+        ]
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true,
+            ticks: {
+              color: '#999'
+            },
+            title: {
+              display: true,
+              text: 'Casos detectados'
+            }
+          },
+          x: {
+            grid: {
+              display: false
+            },
+            title: {
+              display: true,
+              text: 'Fecha'
             }
           }
         }
+      }
+    }
   }
 }

@@ -40,6 +40,7 @@ Chart.register(
 export default class CustomChart extends Vue {
   @Prop() readonly config!: ChartConfiguration;
   public aspectRatio?: number = undefined;
+  public currentChart: Chart|null = null;
 
   private mounted (): void {
     this.updateAspectRatio()
@@ -61,12 +62,16 @@ export default class CustomChart extends Vue {
     const ctx = this.$refs.chart as ChartItem
     const localConfig = this.config
 
+    if (this.currentChart) {
+      this.currentChart.destroy()
+    }
+
     if (localConfig && localConfig.options) {
       localConfig.options.aspectRatio = this.aspectRatio
     }
 
     // eslint-disable-next-line no-new
-    new Chart(ctx, localConfig)
+    this.currentChart = new Chart(ctx, localConfig)
   }
 }
 </script>
