@@ -29,7 +29,9 @@
         <div class="pt-2 pb-2 px-5">
           <div class="flex items-center justify-between">
             <div>
-              Friscovid
+              <NuxtLink no-prefetch to="/" class="text-base font-medium text-gray-900 hover:text-gray-700" @click.native="toggleMenu">
+                Friscovid
+              </NuxtLink>
             </div>
             <div class="-mr-2">
               <span class="bg-white p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500" @click="open = !open">
