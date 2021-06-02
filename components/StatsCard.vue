@@ -5,7 +5,7 @@
     </div>
     <div class="flex items-center pt-1">
       <div class="text-4xl font-bold text-gray-900">
-        {{ value }}
+        {{ (new Intl.NumberFormat()).format(value) }}
       </div>
       <span
         v-if="change !== undefined"
@@ -43,7 +43,7 @@
           />
         </svg>
 
-        <span>&nbsp;{{ change }}</span>
+        <span>&nbsp;{{ new Intl.NumberFormat().format(change) }}</span>
       </span>
     </div>
   </div>
@@ -56,7 +56,7 @@ import { Component, Prop, Vue } from 'vue-property-decorator'
 export default class StatsCard extends Vue {
   @Prop() readonly title: string | undefined;
   @Prop() readonly value: number | undefined;
-  @Prop() readonly change: string | undefined;
+  @Prop() readonly change: number | undefined;
   @Prop() readonly isBetter: boolean | undefined;
 }
 </script>
