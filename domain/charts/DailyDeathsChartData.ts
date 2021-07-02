@@ -26,6 +26,7 @@ export default class DailyCasesChartData {
         ]
       },
       options: {
+        animation: false,
         scales: {
           y: {
             beginAtZero: true,

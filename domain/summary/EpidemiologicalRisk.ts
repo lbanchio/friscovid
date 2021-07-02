@@ -41,10 +41,30 @@ export default class EpidemiologicalRisk {
   public getIncidenceAngle (): number {
     const composedIncidence: number = this.getCasesIncidence() * this.getCasesRatio()
 
-    if (composedIncidence > 300) {
+    if (composedIncidence >= 300) {
       return 180
     }
 
-    return composedIncidence * 180 / 300
+    if (composedIncidence >= 250 && composedIncidence < 300) {
+      const calcIncidence = composedIncidence - 250
+      return (calcIncidence * 45 / 50) + 135
+    }
+
+    if (composedIncidence >= 150 && composedIncidence < 250) {
+      const calcIncidence = composedIncidence - 150
+      return (calcIncidence * 45 / 100) + 90
+    }
+
+    if (composedIncidence >= 50 && composedIncidence < 150) {
+      const calcIncidence = composedIncidence - 50
+      return (calcIncidence * 45 / 100) + 45
+    }
+
+    if (composedIncidence >= 0 && composedIncidence < 50) {
+      const calcIncidence = composedIncidence
+      return (calcIncidence * 45 / 50)
+    }
+
+    return 180
   }
 }
