@@ -44,6 +44,20 @@
       class="mb-4"
       :config="dailyHospitalized"
     />
+
+    <page-subtitle>Casos totales</page-subtitle>
+
+    <div
+      v-if="!dailyActive.loaded"
+      class="h-36 flex items-center justify-center"
+    >
+      <loading-spinner />
+    </div>
+    <custom-chart
+      v-if="dailyActive && dailyActive.loaded"
+      class="mb-4"
+      :config="dailyActive"
+    />
   </div>
 </template>
 
@@ -53,6 +67,7 @@ import { Getter, Action } from 'vuex-class'
 import DailyCasesChartData from '../../domain/charts/DailyCasesChartData'
 import DailyDeathsChartData from '../../domain/charts/DailyDeathsChartData'
 import DailyHospitalizedChartData from '../../domain/charts/DailyHospitalizedChartData'
+import DailyActiveCasesChartData from '../../domain/charts/DailyActiveCasesChartData'
 
 @Component({
   components: {
@@ -66,6 +81,7 @@ export default class Index extends Vue {
   private dailyCases: object | null = null;
   private dailyDeaths: object | null = null;
   private dailyHospitalized: object | null = null;
+  private dailyActive: object | null = null;
 
   @Action('cases/cases/updateRawData') updateRawData: any;
   @Getter('cases/cases/rawData') rawData: any;
@@ -90,6 +106,7 @@ export default class Index extends Vue {
     this.dailyCases = DailyCasesChartData.get(data)
     this.dailyDeaths = DailyDeathsChartData.get(data)
     this.dailyHospitalized = DailyHospitalizedChartData.get(data)
+    this.dailyActive = DailyActiveCasesChartData.get(data)
   }
 }
 </script>

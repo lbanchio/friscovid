@@ -27,6 +27,7 @@ export default class MonthlyDeathsChartData {
         ]
       },
       options: {
+        animation: false,
         scales: {
           y: {
             beginAtZero: true,

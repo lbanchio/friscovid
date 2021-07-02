@@ -1,41 +1,43 @@
-import AverageMaker from '../AverageMaker'
 import IRawData from '../IRawData'
 import DateUtil from '../DateUtil'
 
-export default class DailyCasesChartData {
+export default class DailyActiveCasesChartData {
   public static get (data: Array<IRawData>): object {
     const labels: string[] = []
-    const cases: number[] = []
-    let avg: number[] = []
+    const totalCases: number[] = []
+    const recovered: number[] = []
 
     data!.forEach((element: IRawData) => {
-      const date = DateUtil.fromString(element.date)
-      labels.push(date.toLocaleDateString())
-      cases.push(element.new_cases)
+      labels.push(DateUtil.fromString(element.date).toLocaleDateString())
+      recovered.push(element.recovered)
+      totalCases.push(element.total_cases ?? 0)
     })
 
-    avg = AverageMaker.make(7, cases, true)
-
     return {
-      loaded: cases.length > 0,
-      type: 'bar',
+      loaded: totalCases.length > 0,
+      type: 'line',
       data: {
         labels,
         datasets: [
           {
-            label: 'Media móvil 7D',
-            data: avg,
-            type: 'line',
+            label: 'Casos totales',
+            data: totalCases,
             backgroundColor: '#666',
             borderColor: '#666',
             borderWidth: 2,
             pointRadius: 0,
-            tension: 0.3
+            tension: 0.3,
+            normalized: true
           },
           {
-            label: 'Casos confirmados',
-            data: cases,
-            backgroundColor: '#BBB'
+            label: 'Casos recuperados',
+            data: recovered,
+            backgroundColor: '#AAA',
+            borderColor: '#AAA',
+            borderWidth: 2,
+            pointRadius: 0,
+            tension: 0.3,
+            normalized: true
           }
         ]
       },
@@ -49,7 +51,7 @@ export default class DailyCasesChartData {
             },
             title: {
               display: true,
-              text: 'Casos detectados'
+              text: 'Casos'
             }
           },
           x: {
