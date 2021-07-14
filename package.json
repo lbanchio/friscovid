@@ -19,7 +19,7 @@
     "@nuxtjs/pwa": "^3.3.5",
     "chart.js": "^3.2.1",
     "core-js": "^3.9.1",
-    "nuxt": "^2.15.3"
+    "nuxt": "^2.13.3"
   },
   "devDependencies": {
     "@nuxt/types": "^2.15.3",
