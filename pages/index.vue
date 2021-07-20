@@ -10,7 +10,7 @@
       </page-subtitle>
 
       <loading-spinner v-if="!lastRecord" class="h-40 flex items-center justify-center" />
-      <risk-gauge v-if="lastRecord" :label="composedIncidence > 300 ? '+300' : Math.round(composedIncidence)" :angle="Math.round(composedIncidence)" />
+      <risk-gauge v-if="lastRecord" :label="composedIncidence > 300 ? '+300' : Math.round(composedIncidence)" :angle="Math.round(composedIncidenceAngle)" />
 
       <page-subtitle>
         Último registro:
