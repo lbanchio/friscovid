@@ -6,7 +6,7 @@ export default class AverageMaker {
       let start = (index - elements)
       start = start > 0 ? start : 0
 
-      const lastElements = data.slice(start, index + 1)
+      const lastElements = data.slice(start, index)
 
       const avg = lastElements.reduce((previous: number, current: number) => {
         return previous + current
